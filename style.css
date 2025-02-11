@@ -185,16 +185,14 @@ nav {
   }
 }
 
-@media screen and (max-width: 768px) {
-  .menu {
-    overflow: hidden;
-    width: 260px;
-  }
-}
-
 .hero {
   padding: 50px 20px;
   animation: slide-in 1.5s ease-out;
+  position: relative;
+}
+
+.hero-cta {
+  display: none;
 }
 
 .about,
@@ -269,6 +267,18 @@ footer {
   background: linear-gradient(90deg, #482890, #9b5de5);
 }
 
+.fly-up {
+  animation: fly-up 1s forwards;
+}
+
+.zoom-in {
+  animation: zoom-in 1s forwards;
+}
+
+.fade-out {
+  animation: fade-out 1s forwards;
+}
+
 @keyframes fade-in {
   from {
     opacity: 0;
@@ -321,10 +331,6 @@ footer {
   }
 }
 
-.fly-up {
-  animation: fly-up 1s forwards;
-}
-
 @keyframes fly-up {
   from {
     transform: translateY(100px);
@@ -336,30 +342,38 @@ footer {
   }
 }
 
-.zoom-in {
-  animation: zoom-in 1s forwards;
-}
-
-@keyframes zoom-in {
-  from {
-    transform: scale(0.8);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-.fade-out {
-  animation: fade-out 1s forwards;
-}
-
 @keyframes fade-out {
   from {
     opacity: 1;
   }
   to {
     opacity: 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .menu {
+    overflow: hidden;
+    width: 260px;
+  }
+  .hero img,
+  .about img {
+    width: 60%;
+    height: auto;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .hero-cta {
+    display: block;
+    position: absolute;
+    left: 35%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+  }
+}
+@media screen and (max-width: 575px) {
+  .hero-cta {
+    left: 24%;
   }
 }

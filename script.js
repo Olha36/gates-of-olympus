@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const sections = document.querySelectorAll(".hero, #about, #features, #play"); // Add other sections if needed
+  const sections = document.querySelectorAll(".hero, #about, #features, #play");
 
   const observer = new IntersectionObserver(
     (entries, observer) => {
