@@ -13,14 +13,13 @@ body {
   height: 512px;
   object-fit: cover;
 }
+
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  /* Your linear gradient background */
   background: linear-gradient(90deg, #482890, #9b5de5);
-  /* Allow header height to grow when mobile menu expands */
   flex-wrap: wrap;
 }
 
@@ -31,7 +30,6 @@ header {
   animation: fade-in 2s ease-in-out;
 }
 
-/* Default styling for navigation links in desktop view */
 nav ul {
   list-style: none;
   display: flex;
@@ -49,7 +47,6 @@ nav a:hover {
   color: #ffcc00;
 }
 
-/* CTA Button (common styles) */
 .cta-button {
   background: #ffcc00;
   padding: 15px 30px;
@@ -60,39 +57,28 @@ nav a:hover {
   animation: pulse 1.5s infinite;
 }
 
-/* ===== Burger Menu Specific Styles ===== */
-
-/* --- Mobile-First Rules --- */
-
-/* Ensure the nav element is positioned relative so the absolute menu can appear below it */
 nav {
   position: relative;
 }
 
-/* Hide the “real” horizontal nav (we’ll use our burger menu version) */
 .menu {
   display: inline;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    max-height: 0;
-    /* overflow: hidden; */
-    transition: max-height 0.3sease-out;
-    background: linear-gradient(90deg, #482890, #9b5de5);
-    position: absolute;
-    top: 100%;
-    /* left: 0; */
-    right: 0;
-    width: 260px;
-    z-index: 1;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 0;
+  transition: max-height 0.3s ease-out;
+  background: linear-gradient(90deg, #482890, #9b5de5);
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 1;
 }
 
-/* Each menu item gets a block look and a bottom border */
 .menu li {
   border-bottom: 1px solid #ffcc00;
 }
 
-/* Mobile menu links are block-level and padded for tapping */
 .menu li a {
   display: block;
   padding: 15px;
@@ -101,24 +87,20 @@ nav {
   font-size: 18px;
 }
 
-/* Hide the native checkbox */
 .menu-btn {
   display: none;
 }
 
-/* When the checkbox is checked, expand the menu */
 .menu-btn:checked ~ .menu {
-  max-height: 300px; /* Adjust this value if you add more items */
+  max-height: 300px;
 }
 
-/* --- Burger Icon Styling --- */
 .menu-icon {
   display: inline-block;
   cursor: pointer;
   padding: 10px;
 }
 
-/* The “hamburger” lines */
 .menu-icon .navicon {
   background: white;
   display: block;
@@ -128,10 +110,9 @@ nav {
   transition: background 0.2s ease-out;
 }
 
-/* Create top and bottom lines using pseudo-elements */
 .menu-icon .navicon:before,
 .menu-icon .navicon:after {
-  content: '';
+  content: "";
   position: absolute;
   background: white;
   height: 2px;
@@ -148,7 +129,6 @@ nav {
   top: 8px;
 }
 
-/* When the menu is open, transform the burger icon into an “X” */
 .menu-btn:checked ~ .menu-icon .navicon {
   background: transparent;
 }
@@ -161,12 +141,10 @@ nav {
   transform: translateY(-8px) rotate(-45deg);
 }
 
-/* Hide the desktop CTA button on mobile */
 .cta-desktop {
   display: none;
 }
 
-/* (Optional) Ensure the mobile CTA button inside the menu looks good */
 .cta-mobile button {
   width: 100%;
   border: none;
@@ -177,39 +155,40 @@ nav {
   cursor: pointer;
 }
 
-/* ===== Desktop Overrides ===== */
 @media (min-width: 768px) {
-  /* Hide the burger elements on desktop */
   .menu-btn,
   .menu-icon {
     display: none;
   }
-  
-  /* Show the menu as a horizontal list */
+
   nav .menu {
-    position: static;  /* remove absolute positioning */
+    position: static;
     display: flex;
     max-height: none;
     background: none;
   }
-  
-  /* Remove the bottom borders */
+
   nav .menu li {
     border: none;
   }
-  
-  /* Adjust padding for desktop nav links */
+
   nav .menu li a {
     padding: 0 15px;
   }
-  
-  /* Hide the mobile CTA button and show the separate desktop CTA */
+
   .cta-mobile {
     display: none;
   }
-  
+
   .cta-desktop {
     display: inline-block;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .menu {
+    overflow: hidden;
+    width: 260px;
   }
 }
 
@@ -342,7 +321,6 @@ footer {
   }
 }
 
-/* Scroll animations */
 .fly-up {
   animation: fly-up 1s forwards;
 }
