@@ -1,230 +1,387 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #0d0d0d;
-    color: white;
-    text-align: center;
-  }
-  
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    background: linear-gradient(90deg, #482890, #9b5de5);
-  }
-  
-  .logo img {
-    width: 100px;
-    height: 100px;
-    object-fit: contain;
-    animation: fade-in 2s ease-in-out;
-  }
-  
-  .hero img,
-  .about img {
-    width: 512px;
-    height: 512px;
-    object-fit: cover;
-  }
-  
-  nav ul {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #0d0d0d;
+  color: white;
+  text-align: center;
+}
+
+.hero img,
+.about img {
+  width: 512px;
+  height: 512px;
+  object-fit: cover;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  /* Your linear gradient background */
+  background: linear-gradient(90deg, #482890, #9b5de5);
+  /* Allow header height to grow when mobile menu expands */
+  flex-wrap: wrap;
+}
+
+.logo img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  animation: fade-in 2s ease-in-out;
+}
+
+/* Default styling for navigation links in desktop view */
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #ffcc00;
+}
+
+/* CTA Button (common styles) */
+.cta-button {
+  background: #ffcc00;
+  padding: 15px 30px;
+  border: none;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  animation: pulse 1.5s infinite;
+}
+
+/* ===== Burger Menu Specific Styles ===== */
+
+/* --- Mobile-First Rules --- */
+
+/* Ensure the nav element is positioned relative so the absolute menu can appear below it */
+nav {
+  position: relative;
+}
+
+/* Hide the “real” horizontal nav (we’ll use our burger menu version) */
+.menu {
+  display: inline;
     list-style: none;
-    display: flex;
-    gap: 20px;
-  }
-  
-  nav a {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-    transition: color 0.3s;
-  }
-  
-  nav a:hover {
-    color: #ffcc00;
-  }
-  
-  .cta-button {
-    background: #ffcc00;
-    padding: 15px 30px;
-    border: none;
-    font-size: 20px;
-    font-weight: bold;
-    cursor: pointer;
-    animation: pulse 1.5s infinite;
-  }
-  
-  .hero {
-    padding: 50px 20px;
-    animation: slide-in 1.5s ease-out;
-  }
-  
-  .about,
-  .features,
-  .play-now {
-    padding: 50px 20px;
-    animation: zoom-in 1s ease-out;
-  }
-  
-  .play-button {
-    background: #ff5733;
-    padding: 15px 30px;
-    font-size: 20px;
-    font-weight: bold;
-    cursor: pointer;
-    animation: glow 1.5s infinite alternate;
-  }
-  
-  .features table {
-    width: 80%;
-    max-width: 1000px;
-    margin: 30px auto;
-    border-collapse: collapse;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  }
-  
-  .features th, .features td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #ffcc00;
-  }
-  
-  .features th {
-    background-color: #482890;
-    color: white;
-    font-size: 18px;
-    font-weight: bold;
-  }
-  
-  .features td {
-    background-color: #2b2b2b;
-    color: #ffcc00;
-    font-size: 16px;
-  }
-  
-  .features tr:nth-child(even) td {
-    background-color: #1f1f1f;
-  }
-  
-  .features tr:hover td {
-    background-color: #3a3a3a;
-  }
-  
-  .features td:last-child {
-    text-align: right;
-  }
-  
-  .features table td,
-  .features table th {
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-  
-  .features table td:hover,
-  .features table th:hover {
-    background-color: #ffcc00;
-    color: #0d0d0d;
-  }
-  
-  footer {
-    padding: 20px;
+    padding: 0;
+    margin: 0;
+    max-height: 0;
+    /* overflow: hidden; */
+    transition: max-height 0.3sease-out;
     background: linear-gradient(90deg, #482890, #9b5de5);
+    position: absolute;
+    top: 100%;
+    /* left: 0; */
+    right: 0;
+    width: 260px;
+    z-index: 1;
+}
+
+/* Each menu item gets a block look and a bottom border */
+.menu li {
+  border-bottom: 1px solid #ffcc00;
+}
+
+/* Mobile menu links are block-level and padded for tapping */
+.menu li a {
+  display: block;
+  padding: 15px;
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+/* Hide the native checkbox */
+.menu-btn {
+  display: none;
+}
+
+/* When the checkbox is checked, expand the menu */
+.menu-btn:checked ~ .menu {
+  max-height: 300px; /* Adjust this value if you add more items */
+}
+
+/* --- Burger Icon Styling --- */
+.menu-icon {
+  display: inline-block;
+  cursor: pointer;
+  padding: 10px;
+}
+
+/* The “hamburger” lines */
+.menu-icon .navicon {
+  background: white;
+  display: block;
+  height: 2px;
+  width: 25px;
+  position: relative;
+  transition: background 0.2s ease-out;
+}
+
+/* Create top and bottom lines using pseudo-elements */
+.menu-icon .navicon:before,
+.menu-icon .navicon:after {
+  content: '';
+  position: absolute;
+  background: white;
+  height: 2px;
+  width: 25px;
+  transition: transform 0.2s ease-out;
+  left: 0;
+}
+
+.menu-icon .navicon:before {
+  top: -8px;
+}
+
+.menu-icon .navicon:after {
+  top: 8px;
+}
+
+/* When the menu is open, transform the burger icon into an “X” */
+.menu-btn:checked ~ .menu-icon .navicon {
+  background: transparent;
+}
+
+.menu-btn:checked ~ .menu-icon .navicon:before {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.menu-btn:checked ~ .menu-icon .navicon:after {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Hide the desktop CTA button on mobile */
+.cta-desktop {
+  display: none;
+}
+
+/* (Optional) Ensure the mobile CTA button inside the menu looks good */
+.cta-mobile button {
+  width: 100%;
+  border: none;
+  background: #ffcc00;
+  padding: 15px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* ===== Desktop Overrides ===== */
+@media (min-width: 768px) {
+  /* Hide the burger elements on desktop */
+  .menu-btn,
+  .menu-icon {
+    display: none;
   }
   
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
+  /* Show the menu as a horizontal list */
+  nav .menu {
+    position: static;  /* remove absolute positioning */
+    display: flex;
+    max-height: none;
+    background: none;
   }
   
-  @keyframes slide-in {
-    from {
-      transform: translateY(-50px);
-      opacity: 0;
-    }
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
+  /* Remove the bottom borders */
+  nav .menu li {
+    border: none;
   }
   
-  @keyframes zoom-in {
-    from {
-      transform: scale(0.8);
-      opacity: 0;
-    }
-    to {
-      transform: scale(1);
-      opacity: 1;
-    }
+  /* Adjust padding for desktop nav links */
+  nav .menu li a {
+    padding: 0 15px;
   }
   
-  @keyframes pulse {
-    0% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(1.1);
-    }
-    100% {
-      transform: scale(1);
-    }
+  /* Hide the mobile CTA button and show the separate desktop CTA */
+  .cta-mobile {
+    display: none;
   }
   
-  @keyframes glow {
-    from {
-      box-shadow: 0 0 10px rgba(255, 87, 51, 0.5);
-    }
-    to {
-      box-shadow: 0 0 20px rgba(255, 87, 51, 1);
-    }
+  .cta-desktop {
+    display: inline-block;
   }
-  
-  /* Scroll animations */
-  .fly-up {
-    animation: fly-up 1s forwards;
+}
+
+.hero {
+  padding: 50px 20px;
+  animation: slide-in 1.5s ease-out;
+}
+
+.about,
+.features,
+.play-now {
+  padding: 50px 20px;
+  animation: zoom-in 1s ease-out;
+}
+
+.play-button {
+  background: #ff5733;
+  padding: 15px 30px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  animation: glow 1.5s infinite alternate;
+}
+
+.features table {
+  width: 80%;
+  max-width: 1000px;
+  margin: 30px auto;
+  border-collapse: collapse;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.features th,
+.features td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ffcc00;
+}
+
+.features th {
+  background-color: #482890;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.features td {
+  background-color: #2b2b2b;
+  color: #ffcc00;
+  font-size: 16px;
+}
+
+.features tr:nth-child(even) td {
+  background-color: #1f1f1f;
+}
+
+.features tr:hover td {
+  background-color: #3a3a3a;
+}
+
+.features td:last-child {
+  text-align: right;
+}
+
+.features table td,
+.features table th {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.features table td:hover,
+.features table th:hover {
+  background-color: #ffcc00;
+  color: #0d0d0d;
+}
+
+footer {
+  padding: 20px;
+  background: linear-gradient(90deg, #482890, #9b5de5);
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
   }
-  
-  @keyframes fly-up {
-    from {
-      transform: translateY(100px);
-      opacity: 0;
-    }
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
+  to {
+    opacity: 1;
   }
-  
-  .zoom-in {
-    animation: zoom-in 1s forwards;
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
   }
-  
-  @keyframes zoom-in {
-    from {
-      transform: scale(0.8);
-      opacity: 0;
-    }
-    to {
-      transform: scale(1);
-      opacity: 1;
-    }
+  to {
+    transform: translateY(0);
+    opacity: 1;
   }
-  
-  .fade-out {
-    animation: fade-out 1s forwards;
+}
+
+@keyframes zoom-in {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
   }
-  
-  @keyframes fade-out {
-    from {
-      opacity: 1;
-    }
-    to {
-      opacity: 0;
-    }
+  to {
+    transform: scale(1);
+    opacity: 1;
   }
-  
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 10px rgba(255, 87, 51, 0.5);
+  }
+  to {
+    box-shadow: 0 0 20px rgba(255, 87, 51, 1);
+  }
+}
+
+/* Scroll animations */
+.fly-up {
+  animation: fly-up 1s forwards;
+}
+
+@keyframes fly-up {
+  from {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.zoom-in {
+  animation: zoom-in 1s forwards;
+}
+
+@keyframes zoom-in {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.fade-out {
+  animation: fade-out 1s forwards;
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}

@@ -7,7 +7,7 @@
     <title>Gates of Olympus Play - Free Demo & Slot Game</title>
   </head>
   <body>
-    <header>
+    <!-- <header>
       <div class="logo">
         <img src="./img/logo.webp" alt="Gates of Olympus logo" class="fade-in" />
       </div>
@@ -19,7 +19,41 @@
         </ul>
       </nav>
       <button class="cta-button pulse">Get Bonus</button>
-    </header>
+    </header> -->
+
+
+    <!-- Add a “header” class for targeted styling -->
+<header class="header">
+    <!-- Logo -->
+    <div class="logo">
+      <img src="./img/logo.webp" alt="Gates of Olympus logo" class="fade-in" />
+    </div>
+  
+    <!-- Navigation (burger for mobile / horizontal for desktop) -->
+    <nav>
+      <!-- Mobile Menu Toggle (checkbox hack) -->
+      <input class="menu-btn" type="checkbox" id="menu-btn" aria-label="Toggle Navigation Menu">
+      <!-- Burger Icon -->
+      <label class="menu-icon" for="menu-btn">
+        <span class="navicon"></span>
+      </label>
+      <!-- Menu List (contains your nav links and mobile CTA button) -->
+      <ul class="menu">
+        <li><a href="#about">About</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#play">Play Now</a></li>
+        <!-- This CTA button appears only on mobile -->
+        <li class="cta-mobile">
+          <button class="cta-button pulse">Get Bonus</button>
+        </li>
+      </ul>
+    </nav>
+  
+    <!-- Desktop CTA button (visible only on wider screens) -->
+    <button class="cta-button pulse cta-desktop">Get Bonus</button>
+  </header>
+  
+
     <section class="hero slide-in">
       <img src="./img/hero-image.webp" alt="Gates of Olympus slot - Free demo play" />
       <h2>Experience the Thrill of Gates of Olympus Slot</h2>
